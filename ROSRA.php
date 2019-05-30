@@ -12,10 +12,6 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 	public $parsed = [];
 	public $raw = [];
 	public $current;
-	protected $socket;
-	public function debug($str){
-		var_dump($str);
-	}
 	public function __construct($raw) {
 		$this->current = 0;
 		$position = array_keys($raw,'!re');
@@ -77,7 +73,6 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 		$this->raw = [];
 		$this->parsed = [];
 	}
-
 	private function parseResponse(array $response): array
 	{
 		$result = [];
