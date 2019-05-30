@@ -12,7 +12,6 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 	public $parsed = [];
 	public $raw = [];
 	public $current;
-	public $current_content;
 	protected $socket;
 	public function debug($str){
 		var_dump($str);
@@ -61,7 +60,7 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 		}
 	}
 	public function offsetExists($offset) {
-			return isset($this->raw[$offset]);
+		return isset($this->raw[$offset]);
 	}
 	public function offsetUnset($offset) {
 		unset($this->parsed[$offset]);
@@ -75,8 +74,6 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 		}
 	}
 	public function flush(){
-		$this->parsed_all = FALSE;
-		$this->read_all = FALSE;
 		$this->raw = [];
 		$this->parsed = [];
 	}
