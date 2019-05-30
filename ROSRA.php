@@ -6,7 +6,6 @@
  * Time: 2:07
  */
 
-namespace arily\accounting\plugin\AddressList;
 
 
 class ROSRA implements \Iterator, \ArrayAccess, \Countable {
