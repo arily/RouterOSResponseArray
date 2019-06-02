@@ -6,6 +6,7 @@
  * Time: 2:07
  */
 
+namespace arily\accounting\plugin\AddressList;
 
 
 class ROSRA implements \Iterator, \ArrayAccess, \Countable {
@@ -17,9 +18,11 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 		$position = array_keys($raw,'!re');
 		if (isset($position[1])){
 			$length = $position[1] - $position[0];
-		} else return [];
-		$raw = array_chunk($raw, $length);
-		array_pop($raw);
+			$raw = array_chunk($raw, $length);
+			array_pop($raw);	
+		} else {
+			$raw = [$raw];
+		}
 		$this->raw = $raw;
 	}
 	public function next(){
@@ -46,7 +49,6 @@ class ROSRA implements \Iterator, \ArrayAccess, \Countable {
 	public function rewind() {
 		$this->current = 0;
 	}
-
 	public function offsetSet($offset, $value) {
 		if (is_null($offset)) {
 			$this->parsed[] = $value;
