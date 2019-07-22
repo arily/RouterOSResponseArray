@@ -1,9 +1,15 @@
 # RouterOSResponseArray
 parsing RouterOS response only when access for ROS' raw response.
 currently only tested with /ip/firewall/address-list/print
+Don't use this. This aren't up to date and It's merged into https://github.com/EvilFreelancer/routeros-api-php.
 
 ```
-$response = new ROSRA($ros_client->wr(['/ip/firewall/address-list/print','?'.$query],FALSE));
+$response = $ros_client->write(['/ip/firewall/address-list/print','?'.$query])->readAsIterator();
+```
+
+
+```
+//$response = new ROSRA($ros_client->wr(['/ip/firewall/address-list/print','?'.$query],FALSE)); //out-dated 
 
 //you could treat response as an array except using array_* function.
 
